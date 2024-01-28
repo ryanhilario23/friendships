@@ -1,0 +1,31 @@
+
+        
+CREATE TABLE friendships
+(
+  id         INT       NOT NULL AUTO_INCREMENT,
+  user_id    INT       NOT NULL,
+  friend_id  INT       NOT NULL,
+  created_at timestamp NULL    ,
+  updated_at timestamp NULL    ,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE users
+(
+  id         INT          NOT NULL AUTO_INCREMENT,
+  first_name VARCHAR(255) NULL    ,
+  last_name  VARCHAR(255) NULL    ,
+  created_at timestamp    NULL    ,
+  updated_at timestamp    NULL    ,
+  PRIMARY KEY (id)
+);
+
+ALTER TABLE friendships
+  ADD CONSTRAINT FK_users_TO_friendships
+    FOREIGN KEY (user_id)
+    REFERENCES users (id);
+
+ALTER TABLE friendships
+  ADD CONSTRAINT FK_users_TO_friendships1
+    FOREIGN KEY (friend_id)
+    REFERENCES users (id);
